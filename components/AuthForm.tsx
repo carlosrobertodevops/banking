@@ -40,14 +40,13 @@ const AuthForm = ({ type }: { type: string }) => {
         password: ''
       },
     })
-   
+
     // 2. Define a submit handler.
     const onSubmit = async (data: z.infer<typeof formSchema>) => {
       setIsLoading(true);
 
       try {
         // Sign up with Appwrite & create plaid token
-        
         if(type === 'sign-up') {
           const userData = {
             firstName: data.firstName!,
@@ -86,7 +85,7 @@ const AuthForm = ({ type }: { type: string }) => {
     <section className="auth-form">
       <header className='flex flex-col gap-5 md:gap-8'>
           <Link href="/" className="cursor-pointer flex items-center gap-1">
-            <Image 
+            <Image
               src="/icons/logo.svg"
               width={34}
               height={34}
@@ -97,18 +96,18 @@ const AuthForm = ({ type }: { type: string }) => {
 
           <div className="flex flex-col gap-1 md:gap-3">
             <h1 className="text-24 lg:text-36 font-semibold text-gray-900">
-              {user 
+              {user
                 ? 'Link Account'
                 : type === 'sign-in'
                   ? 'Sign In'
                   : 'Sign Up'
               }
               <p className="text-16 font-normal text-gray-600">
-                {user 
+                {user
                   ? 'Link your account to get started'
                   : 'Please enter your details'
                 }
-              </p>  
+              </p>
             </h1>
           </div>
       </header>
@@ -150,7 +149,7 @@ const AuthForm = ({ type }: { type: string }) => {
                       <Loader2 size={20} className="animate-spin" /> &nbsp;
                       Loading...
                     </>
-                  ) : type === 'sign-in' 
+                  ) : type === 'sign-in'
                     ? 'Sign In' : 'Sign Up'}
                 </Button>
               </div>
